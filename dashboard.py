@@ -8,7 +8,6 @@ st.title("Dashboard")
 
 st.sidebar.text("sidebar")
 
-#selected_product = st.selectbox("Select Product:", df['product_name'].unique())
 selected_product = st.text_input("Enter Product Name:", value="Product 1")
 if selected_product not in df['product_name'].unique():
     st.error("Invalid product name. Please enter a valid product name.")
@@ -18,8 +17,7 @@ product_data = df[df['product_name'] == selected_product]
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=product_data['date'], y=product_data['demand'], name='Demand', line=dict(color='red')))
 fig.add_trace(go.Scatter(x=product_data['date'], y=product_data['forecast'], name='Forecast', line=dict(color='blue')))
-fig.update_layout(title=f'{selected_product}', xaxis_title='Date', yaxis_title='Quantity', height=400)
-
+fig.update_layout(title=f'{selected_product}', xaxis_title='Date', yaxis_title='Demand (units)', height=400, yaxis=dict(range=[0, None]))
 
 st.plotly_chart(fig, use_container_width=True)
 

@@ -4,6 +4,7 @@ import pandas as pd
 from data import df
 
 st.set_page_config(page_title="Dashboard", layout="wide")
+
 st.title("Dashboard")
 
 st.sidebar.text("sidebar")
